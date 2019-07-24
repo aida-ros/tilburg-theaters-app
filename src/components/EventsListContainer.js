@@ -15,6 +15,13 @@ class EventsListContainer extends Component {
           type: 'FETCH_ALL_EVENTS',
           payload: allEvents
         })
+
+        const maxOffset = allEvents.length
+        this.props.dispatch({
+          type: 'SET_MAX_OFFSET',
+          payload: maxOffset
+        })
+        
       })
       .catch(console.error)
   }

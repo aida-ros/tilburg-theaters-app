@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EventsList from './EventsList';
+import Pagination from './Pagination'
 import { connect } from 'react-redux'
 
 class EventsListContainer extends Component {
@@ -21,17 +22,21 @@ class EventsListContainer extends Component {
           type: 'SET_MAX_OFFSET',
           payload: maxOffset
         })
-        
+
       })
       .catch(console.error)
   }
-  
-  render () {
+
+  render() {
     const paginatedEvents = this.props.selectedEvents.slice(this.props.offset, this.props.offset + this.props.limit)
     return (
-      <EventsList
-        eventsPerTen={paginatedEvents}
-      />
+      <main>
+        <EventsList
+          eventsPerTen={paginatedEvents}
+        />
+        <Pagination/>
+      </main>
+
     )
   }
 }

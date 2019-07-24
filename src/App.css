@@ -23,6 +23,20 @@
   color: #61dafb;
 }
 
+.event-container {
+  padding: 5px;
+  border: 0.5px solid rgb(219, 219, 219);
+}
+
+button {
+  width: 80px;
+  height: 33px;
+  margin: 20px;
+  background-color: #b2dae4;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

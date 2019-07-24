@@ -22,14 +22,16 @@ class EventsList extends Component {
     if (!genres) {
       return
     } else {
-      return genres.map(genre => <option value={genre}>{genre}</option>)
+      return genres.map(genre => <option key={genre} value={genre}>{genre}</option>)
     }
   }
 
   render() {
     const { eventsPerTen,
       genres,
-      filterByGenre } = this.props
+      filterByGenre,
+      onChange,
+      onSubmit, } = this.props
 
     return (
       <main className="events-list-container">
@@ -44,6 +46,14 @@ class EventsList extends Component {
             <option value='genre'>Zoek op genre</option>
             {this.renderGenres(genres)}
         </select>
+
+        <form className='performer-form' onSubmit={onSubmit} >
+          <input 
+            type='text' 
+            name='performer' 
+            placeholder='Zoek artiest' 
+            onChange={onChange}></input>
+        </form>
 
         <div className='selected-events-list'>
           {this.renderEvents(eventsPerTen)}

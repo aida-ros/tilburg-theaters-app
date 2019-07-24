@@ -4,6 +4,11 @@ import Pagination from './Pagination'
 import { connect } from 'react-redux'
 
 class EventsListContainer extends Component {
+  state = {
+    title: '',
+    performer: ''
+  }
+  
   componentDidMount = () => {
     this.fetchEvents();
   }
@@ -36,7 +41,29 @@ class EventsListContainer extends Component {
         type: 'FILTER_BY_GENRE',
         payload: genre
       })
+      this.props.dispatch({
+        type: 'RESET_OFFSET'
+      })
     }
+  }
+
+  onChange = event => {
+    console.log(event.target.value)
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  onSubmit = event => {
+    event.preventDefault()
+    this.props.dispatch({
+      type: 'FILTER_BY_PERFORMER',
+      payload: this.state.performer
+    })
+
+    this.props.dispatch({
+      type: 'RESET_OFFSET'
+    })
   }
 
   render() {
@@ -47,6 +74,8 @@ class EventsListContainer extends Component {
           eventsPerTen={paginatedEvents}
           genres={this.props.genres}
           filterByGenre={this.filterByGenre}
+          onChange={this.onChange}
+          onSubmit={this.onSubmit}
         />
         <Pagination/>
       </main>

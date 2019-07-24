@@ -14,9 +14,19 @@ const filterGenres = events => {
   return genres
 }
 
+const sortByDate = events => {
+  events.sort((a, b) => { 
+    if(a.startsAt < b.startsAt) { return -1; }
+    if(a.startsAt > b.startsAt) { return 1; }
+    return 0;
+  })
+  return events
+}
+
 const events = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_ALL_EVENTS':
+      sortByDate(action.payload)
       return {
         ...state,
         allEvents: action.payload,
@@ -26,8 +36,12 @@ const events = (state = initialState, action) => {
     case 'FILTER_BY_GENRE':
       return {
         ...state,
-        selectedEvents: state.allEvents.filter(event => event.genre === action.payload),
-        offset: 0
+        selectedEvents: state.allEvents.filter(event => event.genre === action.payload)
+      }
+    case 'FILTER_BY_PERFORMER':
+      return {
+        ...state,
+        selectedEvents: state.allEvents.filter(event => event.performer === action.payload)
       }
     default:
       return state

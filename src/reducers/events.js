@@ -36,8 +36,12 @@ const events = (state = initialState, action) => {
     case 'FILTER_BY_GENRE':
       return {
         ...state,
-        selectedEvents: state.allEvents.filter(event => event.genre === action.payload),
-        offset: 0
+        selectedEvents: state.allEvents.filter(event => event.genre === action.payload)
+      }
+    case 'FILTER_BY_PERFORMER':
+      return {
+        ...state,
+        selectedEvents: state.allEvents.filter(event => event.performer === action.payload)
       }
     default:
       return state

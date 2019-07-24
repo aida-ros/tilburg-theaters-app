@@ -41,6 +41,9 @@ class EventsListContainer extends Component {
         type: 'FILTER_BY_GENRE',
         payload: genre
       })
+      this.props.dispatch({
+        type: 'RESET_OFFSET'
+      })
     }
   }
 
@@ -56,6 +59,10 @@ class EventsListContainer extends Component {
     this.props.dispatch({
       type: 'FILTER_BY_PERFORMER',
       payload: this.state.performer
+    })
+
+    this.props.dispatch({
+      type: 'RESET_OFFSET'
     })
   }
 

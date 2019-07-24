@@ -11,6 +11,11 @@ const pagination = (state = initialState, action) => {
         ...state,
         maxOffset: action.payload
       }
+    case 'RESET_OFFSET':
+      return {
+        ...state,
+        offset: 0
+      }
     case 'NEXT_PAGE':
       return {
         ...state,

@@ -31,7 +31,8 @@ class EventsList extends Component {
       genres,
       filterByGenre,
       onChange,
-      onSubmit, } = this.props
+      filterPerformer,
+      filterTitle } = this.props
 
     return (
       <main className="events-list-container">
@@ -47,7 +48,15 @@ class EventsList extends Component {
             {this.renderGenres(genres)}
         </select>
 
-        <form className='performer-form' onSubmit={onSubmit} >
+        <form className='title-form' onSubmit={filterTitle} >
+          <input 
+            type='text' 
+            name='title' 
+            placeholder='Zoek titel' 
+            onChange={onChange}></input>
+        </form>
+
+        <form className='performer-form' onSubmit={filterPerformer} >
           <input 
             type='text' 
             name='performer' 

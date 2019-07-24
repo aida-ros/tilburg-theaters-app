@@ -54,15 +54,33 @@ class EventsListContainer extends Component {
     })
   }
 
-  onSubmit = event => {
+  filterPerformer = event => {
     event.preventDefault()
     this.props.dispatch({
       type: 'FILTER_BY_PERFORMER',
       payload: this.state.performer
     })
-
     this.props.dispatch({
       type: 'RESET_OFFSET'
+    })
+
+    this.setState({
+      performer: ''
+    })
+  }
+
+  filterTitle = event => {
+    event.preventDefault()
+    this.props.dispatch({
+      type: 'FILTER_BY_TITLE',
+      payload: this.state.title
+    })
+    this.props.dispatch({
+      type: 'RESET_OFFSET'
+    })
+
+    this.setState({
+      title: ''
     })
   }
 
@@ -75,7 +93,8 @@ class EventsListContainer extends Component {
           genres={this.props.genres}
           filterByGenre={this.filterByGenre}
           onChange={this.onChange}
-          onSubmit={this.onSubmit}
+          filterPerformer={this.filterPerformer}
+          filterTitle={this.filterTitle}
         />
         <Pagination/>
       </main>

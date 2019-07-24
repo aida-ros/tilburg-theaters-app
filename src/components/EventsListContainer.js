@@ -12,7 +12,8 @@ class EventsListContainer extends Component {
       .then(res => res.json())
       .then(allEvents => {
         this.props.dispatch({
-          type: 'TEST'
+          type: 'FETCH_ALL_EVENTS',
+          payload: allEvents
         })
       })
       .catch(console.error)

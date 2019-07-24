@@ -1,14 +1,13 @@
 const initialState = {
-  test: null,
   allEvents: []
 }
 
 const events = (state = initialState, action) => {
   switch (action.type) {
-    case 'TEST':
+    case 'FETCH_ALL_EVENTS':
       return {
         ...state,
-        test: 'Message received'
+        allEvents: action.payload
       }
     default:
       return state

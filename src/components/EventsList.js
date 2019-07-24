@@ -1,77 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Event from './Event'
 
-class EventsList extends Component {
+function EventsList (props) {
+  const { eventsPerTen } = props
 
-  renderEvents = events => {
+  const renderEvents = events => {
     if (!events) {
       return <p>Loading events...</p>
     } else {
       return events.map(event => {
-        return <div key={event.id} className='event-container'>
-          <h4>{event.title}</h4>
-          <h5>{event.performer}</h5>
-          <h5>Locatie: {event.location}</h5>
-          <img alt='performer' src={event.images[0]} />
-          <p>{event.startsAt}</p>
-        </div>
+        return <Event key={event.id} event={event} />
       })
     }
-  }
-
-  renderGenres = genres => {
-    if (!genres) {
-      return
-    } else {
-      return genres.map(genre => <option key={genre} value={genre}>{genre}</option>)
-    }
-  }
-
-  render() {
-    const { eventsPerTen,
-      genres,
-      filterByGenre,
-      onChange,
-      filterPerformer,
-      filterTitle } = this.props
+  }  
 
     return (
       <main className="events-list-container">
-        <div className='main-headers'>
-          <h1>Tilburg Theaters</h1>
-          <h3>Programma overzicht</h3>
-        </div><br />
-
-        <select
-          id="genres"
-          onChange={filterByGenre}>
-            <option value='genre'>Zoek op genre</option>
-            {this.renderGenres(genres)}
-        </select>
-
-        <form className='title-form' onSubmit={filterTitle} >
-          <input 
-            type='text' 
-            name='title' 
-            placeholder='Zoek titel' 
-            onChange={onChange}></input>
-        </form>
-
-        <form className='performer-form' onSubmit={filterPerformer} >
-          <input 
-            type='text' 
-            name='performer' 
-            placeholder='Zoek artiest' 
-            onChange={onChange}></input>
-        </form>
-
         <div className='selected-events-list'>
-          {this.renderEvents(eventsPerTen)}
+          {renderEvents(eventsPerTen)}
         </div>
-        
-
       </main>
     );
-  }
 }
 
 export default EventsList;

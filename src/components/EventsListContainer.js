@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EventsList from './EventsList';
+import Filters from './Filters'
 import Pagination from './Pagination'
 import { connect } from 'react-redux'
 
@@ -48,7 +49,6 @@ class EventsListContainer extends Component {
   }
 
   onChange = event => {
-    console.log(event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -56,6 +56,7 @@ class EventsListContainer extends Component {
 
   filterPerformer = event => {
     event.preventDefault()
+    
     this.props.dispatch({
       type: 'FILTER_BY_PERFORMER',
       payload: this.state.performer
@@ -88,13 +89,20 @@ class EventsListContainer extends Component {
     const paginatedEvents = this.props.selectedEvents.slice(this.props.offset, this.props.offset + this.props.limit)
     return (
       <main>
-        <EventsList
-          eventsPerTen={paginatedEvents}
+        <div className='main-headers'>
+          <h1>Tilburg Theaters</h1>
+          <h3>Programma overzicht</h3>
+        </div><br />
+        <Filters
           genres={this.props.genres}
-          filterByGenre={this.filterByGenre}
           onChange={this.onChange}
+          filterByGenre={this.filterByGenre}
           filterPerformer={this.filterPerformer}
           filterTitle={this.filterTitle}
+        />
+        
+        <EventsList
+          eventsPerTen={paginatedEvents}
         />
         <Pagination/>
       </main>

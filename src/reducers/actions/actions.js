@@ -18,14 +18,10 @@ export const sortByDate = events => {
 }
 
 export const reverseDates = events => {
-
-  const separate = events.map(event => {
-    return event.startsAt.split('T')
-  })
-
-  const reverse = separate.map(date => {
-    return date[0].split('-').reverse().join('-')
-  })
-
-  return reverse
+  const reformatDates = events.map(event => {
+    const separated = event.startsAt.split('T')
+    const date = separated[0].split('-').reverse().join('-')
+    return { ...event, date }
+})
+return reformatDates
 }

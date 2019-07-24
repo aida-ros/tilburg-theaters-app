@@ -10,11 +10,10 @@ const events = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_ALL_EVENTS':
       sortByDate(action.payload)
-      // reverseDates(action.payload)
       return {
         ...state,
-        allEvents: action.payload,
-        selectedEvents: action.payload,
+        allEvents: reverseDates(action.payload),
+        selectedEvents: reverseDates(action.payload),
         genres: filterGenres(action.payload)
       }
     case 'FILTER_BY_GENRE':
@@ -30,7 +29,7 @@ const events = (state = initialState, action) => {
     case 'FILTER_BY_TITLE':
       return {
         ...state,
-        selectedEvents: state.allEvents.filter(event => event.title === action.payload)
+        selectedEvents: state.allEvents.filter(event => event.title.includes === action.payload)
       }
     default:
       return state

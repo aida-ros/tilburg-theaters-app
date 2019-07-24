@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EventsList from './EventsList';
+import { connect } from 'react-redux'
 
 class EventsListContainer extends Component {
   componentDidMount = () => {
@@ -9,7 +10,11 @@ class EventsListContainer extends Component {
   fetchEvents = () => {
     fetch('https://www.theaterstilburg.nl/api/public/events')
       .then(res => res.json())
-      .then(res => console.log(res))
+      .then(allEvents => {
+        this.props.dispatch({
+          type: 'TEST'
+        })
+      })
       .catch(console.error)
   }
   
@@ -20,4 +25,8 @@ class EventsListContainer extends Component {
   }
 }
 
-export default EventsListContainer;
+const mapStateToProps = state => {
+  return state
+}
+
+export default connect(mapStateToProps)(EventsListContainer);

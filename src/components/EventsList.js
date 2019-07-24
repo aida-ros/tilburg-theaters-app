@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class EventsList extends Component {
+  
   renderEvents = events => {
     if (!events) {
       return <p>Loading events...</p>
@@ -30,9 +31,9 @@ class EventsList extends Component {
 
         {this.renderEvents(eventsPerTen)}
 
+        <button>Vorige</button>
+        <button>Volgende</button>
 
-
-        <h2>All events should be rendered here</h2>
       </main>
     );
   }

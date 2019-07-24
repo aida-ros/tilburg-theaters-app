@@ -27,9 +27,11 @@ class EventsListContainer extends Component {
   }
   
   render () {
-    console.log('test', this.props.allEvents)
+    const paginatedEvents = this.props.selectedEvents.slice(this.props.offset, this.props.offset + this.props.limit)
     return (
-      <EventsList/>
+      <EventsList
+        eventsPerTen={paginatedEvents}
+      />
     )
   }
 }
@@ -38,7 +40,9 @@ const mapStateToProps = state => {
   return {
     allEvents: state.events.allEvents,
     selectedEvents: state.events.selectedEvents,
-    genres: state.events.genres
+    genres: state.events.genres,
+    offset: state.pagination.offset,
+    limit: state.pagination.limit
   }
 }
 

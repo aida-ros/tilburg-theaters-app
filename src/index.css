@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.event-container {
+  padding: 5px;
+}
+
+img {
+  max-height: 250px;
+  border-radius: 30px;
+}

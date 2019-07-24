@@ -19,10 +19,7 @@ class EventsList extends Component {
   }
   
   render() {
-    const { eventsPerTen,
-            prevPage,
-            nextPage
-    } = this.props
+    const { eventsPerTen } = this.props
 
     return (
       <main className="events-list-container">
@@ -32,7 +29,7 @@ class EventsList extends Component {
         </div><br />
 
         {this.renderEvents(eventsPerTen)}
-        
+
       </main>
     );
   }

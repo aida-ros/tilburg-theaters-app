@@ -27,12 +27,26 @@ class EventsListContainer extends Component {
       .catch(console.error)
   }
 
+  filterByGenre = event => {
+    const genre = event.target.value
+    if (genre === 'genre') {
+      return alert('Kies een geldig genre.')
+    } else {
+      this.props.dispatch({
+        type: 'FILTER_BY_GENRE',
+        payload: genre
+      })
+    }
+  }
+
   render() {
     const paginatedEvents = this.props.selectedEvents.slice(this.props.offset, this.props.offset + this.props.limit)
     return (
       <main>
         <EventsList
           eventsPerTen={paginatedEvents}
+          genres={this.props.genres}
+          filterByGenre={this.filterByGenre}
         />
         <Pagination/>
       </main>

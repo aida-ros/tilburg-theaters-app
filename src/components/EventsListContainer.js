@@ -20,6 +20,7 @@ class EventsListContainer extends Component {
   }
   
   render () {
+    console.log('test', this.props.allEvents)
     return (
       <EventsList/>
     )
@@ -27,7 +28,9 @@ class EventsListContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  return state
+  return {
+    allEvents: state.events.allEvents
+  }
 }
 
 export default connect(mapStateToProps)(EventsListContainer);

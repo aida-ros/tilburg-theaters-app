@@ -15,6 +15,13 @@ class EventsListContainer extends Component {
           type: 'FETCH_ALL_EVENTS',
           payload: allEvents
         })
+
+        const maxOffset = allEvents.length
+        this.props.dispatch({
+          type: 'SET_MAX_OFFSET',
+          payload: maxOffset
+        })
+        
       })
       .catch(console.error)
   }
@@ -29,7 +36,9 @@ class EventsListContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    allEvents: state.events.allEvents
+    allEvents: state.events.allEvents,
+    selectedEvents: state.events.selectedEvents,
+    genres: state.events.genres
   }
 }
 

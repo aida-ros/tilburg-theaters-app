@@ -1,5 +1,7 @@
 const initialState = {
-  allEvents: []
+  allEvents: [],
+  selectedEvents: [],
+  genres: []
 }
 
 const events = (state = initialState, action) => {
@@ -7,7 +9,8 @@ const events = (state = initialState, action) => {
     case 'FETCH_ALL_EVENTS':
       return {
         ...state,
-        allEvents: action.payload
+        allEvents: action.payload,
+        selectedEvents: action.payload
       }
     default:
       return state

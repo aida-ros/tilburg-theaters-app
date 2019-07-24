@@ -23,10 +23,22 @@ const sortByDate = events => {
   return events
 }
 
+const reverseDates = events => {
+
+  const separate = events.map(event => {
+    return event.startsAt.split('T')
+  })
+
+  const reverse = separate.map(date => {
+    return date[0].split('-').reverse().join('-')
+  })
+}
+
 const events = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_ALL_EVENTS':
       sortByDate(action.payload)
+      // reverse(action.payload)
       return {
         ...state,
         allEvents: action.payload,

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import EventsListContainer from './components/EventsListContainer'
+import EventsListContainer from './components/Events/EventsListContainer'
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Filters (props) {
+function Filter (props) {
     const { 
     genres,
     onChange,
@@ -45,4 +45,4 @@ function Filters (props) {
   );
 }
 
-export default Filters;
+export default Filter;

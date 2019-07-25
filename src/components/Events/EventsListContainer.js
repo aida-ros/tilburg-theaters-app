@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EventsList from './EventsList';
-import Filters from './Filters'
-import Pagination from './Pagination'
+import Filter from '../Filters/Filters'
+import Pagination from '../Pagination/Pagination'
 import { connect } from 'react-redux'
 
 class EventsListContainer extends Component {
@@ -93,7 +93,7 @@ class EventsListContainer extends Component {
           <h1>Tilburg Theaters</h1>
           <h3>Programma overzicht</h3>
         </div><br />
-        <Filters
+        <Filter
           genres={this.props.genres}
           onChange={this.onChange}
           filterByGenre={this.filterByGenre}
